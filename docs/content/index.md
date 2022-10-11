@@ -111,7 +111,7 @@ Nuxt 3已被重新架构，其内核更小，并为更快的性能和更好的�
   #title
   Vue 3
   #description
-  Vue 3是你下一个网络应用的坚实基础。
+  Vue 3是你下一个web应用的坚实基础。
   ::
 
   ::card{icon=IconTypeScript}
