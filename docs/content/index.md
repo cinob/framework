@@ -19,8 +19,8 @@ secondary:
 The Hybrid [Vue]{.text-primary} Framework
 
 #description
-Build your next application with Vue 3 and experience hybrid rendering, powerful data fetching and new features.
-Nuxt 3 is an open source framework making web development simple and powerful.
+使用Vue 3构建你的下一个应用程序，体验混合渲染、强大的数据获取和新功能。
+Nuxt 3是一个开源的框架，使Web开发变得简单而强大。
 
 #right
   ::div{.flex .items-top .justify-center}
@@ -31,93 +31,93 @@ Nuxt 3 is an open source framework making web development simple and powerful.
 
 ::card-grid
 #title
-With new features
+具有新的功能
 
 #description
-Nuxt 3 has been re-architected with a smaller core and optimized for faster performance and better developer experience.
+Nuxt 3已被重新架构，其内核更小，并为更快的性能和更好的开发者体验进行了优化。
 
 #default
   ::card{icon=IconFeather}
   #title
-  Lighter
+  更轻的
   #description
-  Up to 75x smaller server deployments and smaller client bundle targeting modern browsers.
+  服务器部署缩小至75倍以及针对现代浏览器的较小的客户捆绑包
   ::
 
   ::card{icon=IconRabbit}
   #title
-  Faster
+  更快的
   #description
-  Optimized cold start with dynamic server code-splitting, powered by nitro.
+  优化了冷启动与动态服务器代码拆分，由nitro提供。
   ::
 
   ::card{icon=IconHybrid}
   #title
-  Hybrid
+  混合型
   #description
-  Incremental Static Generation and other advanced modes are now possible.
+  现在可以实现增量静态生成和其他高级模式。
   ::
 
   ::card{icon=IconSuspense}
   #title
   Suspense
   #description
-  Fetch data in any component, before or after navigation.
+  在导航之前或之后，在任何组件中获取数据
   ::
 
   ::card{icon=IconCAPI}
   #title
-  Composition API
+  组合式 API
   #description
-  Use the Composition API and Nuxt 3's composables for true code re-usability.
+  使用Composition API和Nuxt 3的composables来实现真正的代码可重用性。
   ::
 
   ::card{icon=IconCLI}
   #title
   Nuxt CLI
   #description
-  A new zero-dependency experience for easy scaffolding and module integration.
+  全新的零依赖性体验，方便脚手架和模块集成。
   ::
 
   ::card{icon=IconDevtools}
   #title
-  Nuxt DevTools
+  Nuxt 开发工具
   #description
-  Work faster with info and quick fixes right in the browser.
+  在浏览器中直接使用信息和快速修复，工作更快。
   ::
 
   ::card{icon=IconKit}
   #title
   Nuxt Kit
   #description
-  Brand new module development with TypeScript and cross-version compatibility.
+  全新的模块开发，采用TypeScript以及跨版本兼容性。
   ::
 
   ::card{icon=IconWebpack}
   #title
   webpack 5
   #description
-  Faster build time and smaller bundle size, with no configuration required.
+  构建时间更快，捆绑尺寸更小，不需要配置。
   ::
 
   ::card{icon=IconVite}
   #title
   Vite
   #description
-  Experience lightning fast HMR by using Vite as your bundler.
+  通过使用Vite作为您的捆绑器，体验闪电般的HMR速度。
   ::
 
   ::card{icon=IconVue}
   #title
   Vue 3
   #description
-  Vue 3 is a solid foundation for your next web app.
+  Vue 3是你下一个网络应用的坚实基础。
   ::
 
   ::card{icon=IconTypeScript}
   #title
   TypeScript
   #description
-  Built with native TypeScript and ESM - no extra steps required.
+  使用本地TypeScript和ESM构建 - 不需要额外的步骤。
   ::
 ::
