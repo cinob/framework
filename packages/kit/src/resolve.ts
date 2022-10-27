@@ -2,8 +2,8 @@ import { promises as fsp, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { basename, dirname, resolve, join, normalize, isAbsolute } from 'pathe'
 import { globby } from 'globby'
-import { normalizeAliases } from 'pathe/utils'
-import { tryUseNuxt, useNuxt } from './context'
+import { resolveAlias as _resolveAlias } from 'pathe/utils'
+import { tryUseNuxt } from './context'
 import { tryResolveModule } from './internal/cjs'
 import { isIgnored } from './ignore'
 
@@ -34,7 +34,7 @@ export async function resolvePath (path: string, opts: ResolvePathOptions = {}):
   }
 
   // Use current nuxt options
-  const nuxt = useNuxt()
+  const nuxt = tryUseNuxt()
   const cwd = opts.cwd || (nuxt ? nuxt.options.rootDir : process.cwd())
   const extensions = opts.extensions || (nuxt ? nuxt.options.extensions : ['.ts', '.mjs', '.cjs', '.json'])
   const modulesDir = nuxt ? nuxt.options.modulesDir : []
@@ -106,13 +106,7 @@ export function resolveAlias (path: string, alias?: Record<string, string>): str
   if (!alias) {
     alias = tryUseNuxt()?.options.alias || {}
   }
-  for (const key in normalizeAliases(alias)) {
-    if (key === '@' && !path.startsWith('@/')) { continue } // Don't resolve @foo/bar
-    if (path.startsWith(key)) {
-      path = alias[key] + path.slice(key.length)
-    }
-  }
-  return path
+  return _resolveAlias(path, alias)
 }
 
 export interface Resolver {

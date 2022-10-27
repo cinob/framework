@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs'
-import { defineNuxtModule, addTemplate, addPlugin, addVitePlugin, addWebpackPlugin, findPath, addComponent } from '@nuxt/kit'
+import { defineNuxtModule, addTemplate, addPlugin, addVitePlugin, addWebpackPlugin, findPath, addComponent, updateTemplates } from '@nuxt/kit'
 import { relative, resolve } from 'pathe'
 import { genString, genImport, genObjectFromRawEntries } from 'knitwork'
 import escapeRE from 'escape-string-regexp'
@@ -23,6 +23,11 @@ export default defineNuxtModule({
     // Disable module (and use universal router) if pages dir do not exists or user has disabled it
     if ((nuxt.options.pages === false || (nuxt.options.pages !== true && !pagesDirs.some(dir => existsSync(dir)))) && !isRouterOptionsPresent) {
       addPlugin(resolve(distDir, 'app/plugins/router'))
+      // Add vue-router import for `<NuxtLayout>` integration
+      addTemplate({
+        filename: 'pages.mjs',
+        getContents: () => 'export { useRoute } from \'#app\''
+      })
       return
     }
 
@@ -43,7 +48,7 @@ export default defineNuxtModule({
 
       const pathPattern = new RegExp(`(^|\\/)(${dirs.map(escapeRE).join('|')})/`)
       if (event !== 'change' && path.match(pathPattern)) {
-        await nuxt.callHook('builder:generateApp')
+        await updateTemplates()
       }
     })
 
@@ -133,6 +138,12 @@ export default defineNuxtModule({
         const { routes, imports } = normalizeRoutes(pages)
         return [...imports, `export default ${routes}`].join('\n')
       }
+    })
+
+    // Add vue-router import for `<NuxtLayout>` integration
+    addTemplate({
+      filename: 'pages.mjs',
+      getContents: () => 'export { useRoute } from \'vue-router\''
     })
 
     // Add router options template

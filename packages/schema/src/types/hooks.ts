@@ -6,8 +6,8 @@ import type { InlineConfig as ViteInlineConfig, ViteDevServer } from 'vite'
 import type { Manifest } from 'vue-bundle-renderer'
 import type { EventHandler } from 'h3'
 import type { ModuleContainer } from './module'
-import type { NuxtTemplate, Nuxt, NuxtApp } from './nuxt'
-import type { Preset as ImportPreset, Import } from 'unimport'
+import type { NuxtTemplate, Nuxt, NuxtApp, ResolvedNuxtTemplate } from './nuxt'
+import type { Import, InlinePreset } from 'unimport'
 import type { NuxtConfig, NuxtOptions } from './config'
 import type { Nitro, NitroConfig } from 'nitropack'
 import type { Component, ComponentsOptions } from './components'
@@ -59,11 +59,15 @@ export type NuxtLayout = {
   file: string
 }
 
-export interface ImportPresetWithDeprecation extends ImportPreset {
+export interface ImportPresetWithDeprecation extends InlinePreset {
   /**
    * @deprecated renamed to `imports`
    */
   names?: string[]
+}
+
+export interface GenerateAppOptions {
+  filter?: (template: ResolvedNuxtTemplate<any>) => boolean
 }
 
 export interface NuxtHooks {
@@ -74,7 +78,7 @@ export interface NuxtHooks {
   'app:resolve': (app: NuxtApp) => HookResult
   'app:templates': (app: NuxtApp) => HookResult
   'app:templatesGenerated': (app: NuxtApp) => HookResult
-  'builder:generateApp': () => HookResult
+  'builder:generateApp': (options?: GenerateAppOptions) => HookResult
   'pages:extend': (pages: NuxtPage[]) => HookResult
   'build:manifest': (manifest: Manifest) => HookResult
   'server:devHandler': (handler: EventHandler) => HookResult
